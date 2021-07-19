@@ -17,8 +17,25 @@
 
 
 
+
   <h2>Striped Rows</h2>
-  <p>The .table-striped class adds zebra-stripes to a table:</p>            
+  <p>The .table-striped class adds zebra-stripes to a table:</p>    
+  <a href="{{url('create')}}" class="btn btn-success">Add Blog</a>
+
+  {{-- {{ route('brand.manage_brand_process') }}   --}}   
+
+@if(session()->has('message'))
+<div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
+    <span class="badge badge-pill badge-success">Success</span>
+    {{session('message')}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+</div>
+@endif
+
+
+  <br><br>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -27,6 +44,7 @@
         <th>Source</th>
         <th>Description</th>
         <th>Created At</th>
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
@@ -40,6 +58,10 @@
        {{--  <td>{{ $value['created_at'] }}</td> --}}
 
          <td>{{ $value['created_at']->format('d/m/Y') }}</td>
+
+         <td><a href="{{ url("edit_blog") }}/{{$value['id']}}" class="btn btn-warning">Edit</a></td>
+
+         <td><a href="{{ url("delete") }}/{{$value['id']}}" class="btn btn-danger">Delete</a></td>
       </tr>
       @endforeach
     </tbody>

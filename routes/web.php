@@ -32,3 +32,12 @@ Route::get('/main/page', [HomeController::class, 'getData']);
 Route::get('/admin', [LoginController::class, 'login']);
 
 Route::get('/blog', [CrudController::class, 'index']);
+Route::get('/create', [CrudController::class, 'loadForm']);
+Route::post('/create', [CrudController::class, 'manageBlog'])->name('create.manageBlog');
+
+Route::get('/edit_blog/{id}', [CrudController::class, 'editBlog']);
+
+Route::post('/updateBlog', [CrudController::class, 'updateBlog'])->name('create.updateBlog');
+
+Route::get('/delete/{id}', [CrudController::class, 'deleteBlog']);
+    
