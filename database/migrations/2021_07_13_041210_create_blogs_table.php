@@ -18,6 +18,7 @@ class CreateBlogsTable extends Migration
             $table->string('title');
             $table->string('source');
             $table->longText('description');
+            $table->string('file');
             $table->timestamps();
         });
     }

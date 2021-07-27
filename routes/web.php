@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CrudController;
+use App\Http\Controllers\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,4 +41,12 @@ Route::get('/edit_blog/{id}', [CrudController::class, 'editBlog']);
 Route::post('/updateBlog', [CrudController::class, 'updateBlog'])->name('create.updateBlog');
 
 Route::get('/delete/{id}', [CrudController::class, 'deleteBlog']);
+
+Route::get('/blogs', [BlogController::class, 'index']);
+Route::get('/manage_blog', [BlogController::class, 'manage_blog']);
+Route::get('/manage_blog/{id}', [BlogController::class, 'manage_blog']);
+
+Route::post('/manage_process', [BlogController::class, 'manage_process'])->name('create.manage_process');
+
+
     

@@ -20,7 +20,7 @@
 
   <h2>Striped Rows</h2>
   <p>The .table-striped class adds zebra-stripes to a table:</p>    
-  <a href="{{url('create')}}" class="btn btn-success">Add Blog</a>
+  <a href="{{url('manage_blog')}}" class="btn btn-success">Add Blog</a>
 
   {{-- {{ route('brand.manage_brand_process') }}   --}}   
 
@@ -42,7 +42,6 @@
         <th>Sr.No</th>
         <th>Title</th>
         <th>Source</th>
-        <th>Image</th>
         <th>Description</th>
         <th>Created At</th>
         <th>Action</th>
@@ -55,13 +54,12 @@
         <td>{{++$key}}</td>
         <td>{{ $value['title'] }}</td>
         <td>{{ $value['source'] }}</td>
-        <td><img src="{{ asset('storage/media/'.$value['image']) }}" width="80"></td>
         <td>{{ $value['description'] }}</td>
        {{--  <td>{{ $value['created_at'] }}</td> --}}
 
          <td>{{ $value['created_at']->format('d/m/Y') }}</td>
 
-         <td><a href="{{ url("edit_blog") }}/{{$value['id']}}" class="btn btn-warning">Edit</a></td>
+         <td><a href="{{ url("manage_blog") }}/{{$value['id']}}" class="btn btn-warning">Edit</a></td>
 
          <td><a href="{{ url("delete") }}/{{$value['id']}}" class="btn btn-danger">Delete</a></td>
       </tr>
