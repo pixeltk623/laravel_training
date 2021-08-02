@@ -53,6 +53,7 @@
     @foreach($data as $key => $value)
       <tr>
         <td>{{++$key}}</td>
+        <td><img src="{{ asset('storage/media/'.$value['file']) }}" class="img-thumbnail" width="75" /></td>
         <td>{{ $value['title'] }}</td>
         <td>{{ $value['source'] }}</td>
         <td><img src="{{ asset('storage/media/'.$value['image']) }}" width="80"></td>

@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CrudController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,8 +31,6 @@ Route::get('/home', function() {
 Route::get('/main', [HomeController::class, 'index']);
 Route::get('/main/page', [HomeController::class, 'getData']);
 
-Route::get('/admin', [LoginController::class, 'login']);
-
 Route::get('/blog', [CrudController::class, 'index']);
 Route::get('/create', [CrudController::class, 'loadForm']);
 Route::post('/create', [CrudController::class, 'manageBlog'])->name('create.manageBlog');
@@ -47,6 +46,11 @@ Route::get('/manage_blog', [BlogController::class, 'manage_blog']);
 Route::get('/manage_blog/{id}', [BlogController::class, 'manage_blog']);
 
 Route::post('/manage_process', [BlogController::class, 'manage_process'])->name('create.manage_process');
+
+/* -- Admin Pannel Start -- */
+
+Route::get('/login', [AdminController::class, 'index']);
+Route::get('/dashboard', [AdminController::class, 'adminDashBoard']);
 
 
     

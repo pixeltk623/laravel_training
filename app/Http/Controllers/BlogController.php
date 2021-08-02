@@ -51,9 +51,11 @@ class BlogController extends Controller
             $fileName = $request->file('fileUpload'); 
             $ext = $request->fileUpload->extension();
             $imageName = time(). ".".$ext;
-           // $request->fileUpload->storeAs('public/images', $imageName);
+            $request->fileUpload->storeAs('public/images', $imageName);
+            $fileName->storeAs('public/media', $imageName);
+          //  $request->fileUpload->move(public_path('uploads'), $imageName);
 
-            Storage::disk('public')->put('filename', $imageName);
+           // Storage::disk('public')->put('filename', $imageName);
 
         }
     	if ($request->post('uid')>0) {
