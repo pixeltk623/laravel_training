@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CrudController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\AdminController;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,7 +51,25 @@ Route::post('/manage_process', [BlogController::class, 'manage_process'])->name(
 /* -- Admin Pannel Start -- */
 
 Route::get('/login', [AdminController::class, 'index']);
-Route::get('/dashboard', [AdminController::class, 'adminDashBoard']);
+
+
+Route::post('/auth', [AdminController::class, 'auth'])->name('admin.auth');
+
+Route::get('/update-password', [AdminController::class, 'updatePassword']);
+
+Route::group(['middleware'=> 'admin_auth'], function() {
+	Route::get('/dashboard', [AdminController::class, 'adminDashBoard']);
+});
+
+Route::get('/logout', function(Request $request) {
+
+	$request->session()->forget(['Login_User', 'Login_id']);
+	$request->session()->flush();
+	$request->session()->flash('error', 'You are LogOut Now!');
+    return redirect('login');
+
+});
+
 
 
     
