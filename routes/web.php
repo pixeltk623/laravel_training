@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CrudController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
 
 /*
@@ -69,6 +70,10 @@ Route::get('/logout', function(Request $request) {
     return redirect('login');
 
 });
+
+Route::get('/product', [ProductController::class, 'index']);
+
+Route::get('/add-to-cart/{id}', [ProductController::class, 'addToCart']);
 
 
 
